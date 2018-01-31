@@ -1,4 +1,4 @@
-// page/config/index.js
+// page/my/index.js
 Page({
 
   /**
