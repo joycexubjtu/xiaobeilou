@@ -5,7 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    list: [
+      {
+        id: 'shi',
+        name: '古诗词',
+        num: 2,
+        bgimg: 'bg-shi.png'
+      }
+    ]
   },
 
   /**
