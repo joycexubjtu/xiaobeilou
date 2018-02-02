@@ -1,1 +1,1 @@
-/* page/recite/index.wxss */
+@import "../common/index.wxss";

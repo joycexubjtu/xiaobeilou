@@ -1,0 +1,14 @@
+@import "../../../common/lib/weui.wxss";
+.flex-wrp{
+  margin-top: 60rpx;
+  display:flex;
+}
+.flex-item-menu{
+  width: 100rpx;
+  font-size: 26rpx;
+}
+.flex-item-content{
+  width: 650rpx;
+  height: 300rpx;
+  font-size: 26rpx;
+}

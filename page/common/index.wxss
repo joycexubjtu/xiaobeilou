@@ -1,5 +1,13 @@
 .recite-list-item {
-  margin: 20rpx 0;
-  height:50px;
-  overflow: hidden;
+  position:relative;
+  margin:0 auto;
+}
+.recite-list-item-desc{
+  position:absolute;
+  bottom:48px;
+  right:40px;
+}
+.recite-list-item-img{
+  margin: 0 auto;
+  width: 100%;
 }

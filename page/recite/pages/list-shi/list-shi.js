@@ -1,4 +1,4 @@
-// page/recite/index.js
+// page/recite/pages/list-shi/list-shi.js
 Page({
 
   /**
@@ -7,19 +7,23 @@ Page({
   data: {
     list: [
       {
-        id: 'shi',
-        name: '古诗词',
-        desc:'共1首古诗',
-        bgimg: 'bg-shi.png',
-        page: 'list-shi'
+        id: 1,
+        author: '李白',
+        data: [
+          {
+            id : 1,
+            title: '望庐山瀑布'
+          },
+          {
+            id: 2,
+            title: '赠汪伦'
+          }
+        ]
       },
       {
-        id: 'cheng',
-        name: '乘法口诀',
-        desc: '九九乘法表',
-        bgimg: 'bg-cheng.png',
-        page: 'list-cheng'
-      },
+        id: 2,
+        author: '杜甫'
+      }
     ]
   },
 

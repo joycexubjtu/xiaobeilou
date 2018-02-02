@@ -1,26 +1,11 @@
-// page/recite/index.js
+// page/recite/pages/list-cheng/list-cheng.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: [
-      {
-        id: 'shi',
-        name: '古诗词',
-        desc:'共1首古诗',
-        bgimg: 'bg-shi.png',
-        page: 'list-shi'
-      },
-      {
-        id: 'cheng',
-        name: '乘法口诀',
-        desc: '九九乘法表',
-        bgimg: 'bg-cheng.png',
-        page: 'list-cheng'
-      },
-    ]
+  
   },
 
   /**
