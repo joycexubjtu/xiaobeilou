@@ -4,11 +4,35 @@
   display:flex;
 }
 .flex-item-menu{
-  width: 100rpx;
+  width: 150rpx;
   font-size: 26rpx;
 }
+.flex-item-menu-nav{
+  padding:34rpx 0;
+  text-align:center;
+  background-color:#eee;
+}
+.flex-item-menu-nav.current{
+  background-color:#fff;
+}
 .flex-item-content{
-  width: 650rpx;
+  width: 600rpx;
   height: 300rpx;
   font-size: 26rpx;
+  background-color:#fff;
+}
+.flex-item-content-block{
+  display: none;
+}
+.flex-item-content-block.current{
+  display: block;
+}
+.item-shi{
+  background-color:#fed547;
+  border-radius: 10px;
+  display:inline-block;
+  width:160rpx;
+  margin:8rpx;
+  padding:0 2rpx;
+  text-align:center;
 }

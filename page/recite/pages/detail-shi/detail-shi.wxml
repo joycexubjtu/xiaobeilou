@@ -1,0 +1,20 @@
+<view class="page-container">
+  <view class="shi-box">
+    <view class="shi-title">
+      {{title}}
+    </view>
+    <view class="shi-author">
+      {{dynasty}} {{author}}
+    </view>
+    <view class="shi-body">
+      <view class="shi-line" wx:for-items="{{content}}" wx:key="{{index}}">
+        <view class="shi-word {{recite?'recite':''}}" wx:for-items="{{item}}" wx:for-item="word" wx:key="{{index}}">
+          {{word}}
+        </view>
+      </view>
+    </view>
+    <view class="shi-recite">
+      <image src="../../resources/btn-start.png" style="width:32px;height:32px;" bindtap="startRecite"></image>
+    </view>
+  </view>
+</view>

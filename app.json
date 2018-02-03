@@ -4,7 +4,8 @@
     "page/stat/index",
     "page/my/index",
     "page/recite/pages/list-shi/list-shi",
-    "page/recite/pages/list-cheng/list-cheng"
+    "page/recite/pages/list-cheng/list-cheng",
+    "page/recite/pages/detail-shi/detail-shi"
   ],
   "window": {
     "navigationBarTextStyle": "black",

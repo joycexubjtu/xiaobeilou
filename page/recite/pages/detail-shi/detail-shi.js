@@ -1,49 +1,32 @@
-// page/recite/pages/list-shi/list-shi.js
+// page/recite/pages/detail-shi/detail-shi.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    current : 1,
-    list: [
-      {
-        id: 1,
-        author: '李白',
-        data: [
-          {
-            id : 1,
-            title: '望庐山瀑布'
-          },
-          {
-            id: 2,
-            title: '赠汪伦'
-          },
-          {
-            id: 3,
-            title: '还有啥？'
-          }
-        ]
-      },
-      {
-        id: 2,
-        author: '杜甫'
-      }
-    ]
+    recite : false,
+    id : 1,
+    title : '望庐山瀑布', 
+    author : '李白',
+    dynasty : '唐',
+    content: [['日', '照', '香', '炉', '生', '紫','烟，'], 
+      ['遥', '看', '瀑', '布', '挂', '前','川，'], 
+      ['飞', '流', '直', '下', '三', '千','尺，'],
+      ['疑', '是', '银', '河', '落', '九','天。']]
   },
-  changeType: function (event) {
-    var id = event.currentTarget.dataset.id;
-    console.log(id);
-    this.setData({current:id});
-  },
-  onReady: function(event) {
-    
+  startRecite: function(event) {
+    this.setData({
+      recite: true
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({
+      id: options.id
+    })
   },
 
   /**

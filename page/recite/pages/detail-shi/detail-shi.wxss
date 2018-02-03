@@ -1,0 +1,11 @@
+/* page/recite/pages/detail-shi/detail-shi.wxss */
+.shi-word{
+  display:inline-block;
+  width:44rpx;
+  height:44rpx;
+  margin-right:5rpx;
+}
+.shi-word.recite{
+  background-color:#fed547;
+  color:#fed547;
+}

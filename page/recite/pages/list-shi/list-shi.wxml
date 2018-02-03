@@ -10,21 +10,19 @@
         </view>
     </view>
     <view class="page-section">
-      <view class="page-section-spacing">
-        <view class="flex-wrp" style="flex-direction:row;">
-          <view class="flex-item-menu">
-            <block wx:for-items="{{list}}" wx:key="{{item.id}}">
-              <view>
-                {{item.author}}
-              </view>
-            </block>
+      <view class="flex-wrp" style="flex-direction:row;">
+        <view class="flex-item-menu">
+          <view class="flex-item-menu-nav {{item.id==current?'current':''}}" wx:for-items="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="changeType">
+            {{item.author}}
           </view>
-          <view class="flex-item-content">
-            <block wx:for-items="{{list}}" wx:key="{{item.id}}">
-              <view wx:for-items="{{item.data}}" wx:key="{{item.id}}">
+        </view>
+        <view class="flex-item-content">
+          <view class="flex-item-content-block {{item.id==current?'current':''}}" wx:for-items="{{list}}" wx:key="{{item.id}}">
+            <view wx:for-items="{{item.data}}" wx:key="{{item.id}}" class="item-shi">
+              <navigator url="/page/recite/pages/detail-shi/detail-shi?id={{item.id}}">
                 {{item.title}}
-              </view>
-            </block>
+              </navigator>
+            </view>
           </view>
         </view>
       </view>
