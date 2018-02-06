@@ -1,9 +1,11 @@
 <view class="index">
-  <!--
-  <view class="index-hd">
-    <view class="index-desc">这里显示用户信息</view>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
   </view>
-  -->
   <view class="index-bd">
     <view class="recite-list">
       <block wx:for-items="{{list}}" wx:key="{{item.id}}">
