@@ -1,1 +1,24 @@
 @import "../common/index.wxss";
+.item-image{
+  z-index:2;
+}
+.item-image image{
+  width:750rpx;
+  height:374rpx;
+}
+.item-summary{
+  margin:-100rpx 50rpx 0;
+  width:650rpx;
+  height:150rpx;
+  border-radius:20px;
+  box-shadow:0 0 50rpx #e1e1e1;
+}
+.item-summary text{
+  margin-bottom:20rpx;
+}
+.item-summary text.l{
+  margin-left:10px;
+}
+.item-summary text.r{
+  margin-right:10px;
+}

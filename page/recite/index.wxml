@@ -1,21 +1,23 @@
-<view class="index">
-  <view class="userinfo">
+<view class="box box-tb box-nowrap">
+  <view class="flex box box-align-center box-pack-center userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class="index-bd">
-    <view class="recite-list">
-      <block wx:for-items="{{list}}" wx:key="{{item.id}}">
-        <navigator url="pages/{{item.page}}/{{item.page}}" class="navigator">
-        <view class="recite-list-item">
-          <image src="resources/{{item.bgimg}}" class="recite-list-item-img" mode="aspectFit"></image>
-          <view class="recite-list-item-desc">{{item.desc}}</view>
+  <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+    <navigator url="pages/{{item.page}}/{{item.page}}" class="navigator">
+      <view class="box box-tb box-nowrap">
+        <view class="item-image">
+          <image src="resources/{{item.bgimg}}"></image>
         </view>
-        </navigator>
-      </block>
-    </view>
-  </view>
+        <view class="box box-bt item-summary">
+            <view class="box box-lr box-pack-between box-nowrap">
+              <text class='fs28 l' style="">{{item.name}}</text>
+              <text class='fs28 gray-color r'>{{item.desc}}</text>
+            </view>
+        </view>
+      </view>
+    </navigator>
+  </block>
 </view>
