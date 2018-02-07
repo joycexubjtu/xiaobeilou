@@ -1,66 +1,168 @@
-// page/stat/index.js
-Page({
-
-  /**
-   * 页面的初始数据
-   */
+'use strict';
+let choose_year = null,
+  choose_month = null;
+const conf = {
   data: {
-  
+    hasEmptyGrid: false,
+    showPicker: false,
+    recite: 0,
+    recited:0,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  onLoad() {
+    const date = new Date();
+    const cur_year = date.getFullYear();
+    const cur_month = date.getMonth() + 1;
+    const weeks_ch = ['日', '一', '二', '三', '四', '五', '六'];
+    this.calculateEmptyGrids(cur_year, cur_month);
+    this.calculateDays(cur_year, cur_month);
+    this.setData({
+      cur_year,
+      cur_month,
+      weeks_ch
+    });
+    let that = this;
+    wx.request({
+      url: 'https://www.xjjstudy.com/index.php/stat/', //仅为示例，并非真实的接口地址
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data)
+        if(res.data.status === 0){
+          let data = res.data.data;
+          that.setData({
+            recite: data.summary.success_cnt,
+            recited: data.summary.total_cnt
+          });
+        }
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  getThisMonthDays(year, month) {
+    return new Date(year, month, 0).getDate();
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  getFirstDayOfWeek(year, month) {
+    return new Date(Date.UTC(year, month - 1, 1)).getDay();
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  calculateEmptyGrids(year, month) {
+    const firstDayOfWeek = this.getFirstDayOfWeek(year, month);
+    let empytGrids = [];
+    if (firstDayOfWeek > 0) {
+      for (let i = 0; i < firstDayOfWeek; i++) {
+        empytGrids.push(i);
+      }
+      this.setData({
+        hasEmptyGrid: true,
+        empytGrids
+      });
+    } else {
+      this.setData({
+        hasEmptyGrid: false,
+        empytGrids: []
+      });
+    }
   },
+  calculateDays(year, month) {
+    let days = [];
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+    const thisMonthDays = this.getThisMonthDays(year, month);
+
+    for (let i = 1; i <= thisMonthDays; i++) {
+      days.push({
+        day: i,
+        count: 0.5,
+        choosed: false
+      });
+    }
+
+    this.setData({
+      days
+    });
   },
+  handleCalendar(e) {
+    const handle = e.currentTarget.dataset.handle;
+    const cur_year = this.data.cur_year;
+    const cur_month = this.data.cur_month;
+    if (handle === 'prev') {
+      let newMonth = cur_month - 1;
+      let newYear = cur_year;
+      if (newMonth < 1) {
+        newYear = cur_year - 1;
+        newMonth = 12;
+      }
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+      this.calculateDays(newYear, newMonth);
+      this.calculateEmptyGrids(newYear, newMonth);
+
+      this.setData({
+        cur_year: newYear,
+        cur_month: newMonth
+      });
+
+    } else {
+      let newMonth = cur_month + 1;
+      let newYear = cur_year;
+      if (newMonth > 12) {
+        newYear = cur_year + 1;
+        newMonth = 1;
+      }
+
+      this.calculateDays(newYear, newMonth);
+      this.calculateEmptyGrids(newYear, newMonth);
+
+      this.setData({
+        cur_year: newYear,
+        cur_month: newMonth
+      });
+    }
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  tapDayItem(e) {
+    const idx = e.currentTarget.dataset.idx;
+    const days = this.data.days;
+    days[idx].choosed = !days[idx].choosed;
+    this.setData({
+      days,
+    });
   },
+  chooseYearAndMonth() {
+    const cur_year = this.data.cur_year;
+    const cur_month = this.data.cur_month;
+    let picker_year = [],
+      picker_month = [];
+    for (let i = 1900; i <= 2100; i++) {
+      picker_year.push(i);
+    }
+    for (let i = 1; i <= 12; i++) {
+      picker_month.push(i);
+    }
+    const idx_year = picker_year.indexOf(cur_year);
+    const idx_month = picker_month.indexOf(cur_month);
+    this.setData({
+      picker_value: [idx_year, idx_month],
+      picker_year,
+      picker_month,
+      showPicker: true,
+    });
+  },
+  pickerChange(e) {
+    const val = e.detail.value;
+    choose_year = this.data.picker_year[val[0]];
+    choose_month = this.data.picker_month[val[1]];
+  },
+  tapPickerBtn(e) {
+    const type = e.currentTarget.dataset.type;
+    const o = {
+      showPicker: false,
+    };
+    if (type === 'confirm') {
+      o.cur_year = choose_year;
+      o.cur_month = choose_month;
+      this.calculateEmptyGrids(choose_year, choose_month);
+      this.calculateDays(choose_year, choose_month);
+    }
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    this.setData(o);
   }
-})
+};
+
+Page(conf);
