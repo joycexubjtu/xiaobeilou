@@ -1,7 +1,9 @@
 @import "../../../common/lib/weui.wxss";
+@import "../../../common/index.wxss";
 .flex-wrp{
-  margin-top: 60rpx;
+  margin-top: 30rpx;
   display:flex;
+  height: 100%;
 }
 .flex-item-menu{
   width: 150rpx;
@@ -17,7 +19,7 @@
 }
 .flex-item-content{
   width: 600rpx;
-  height: 300rpx;
+  height: 100%;
   font-size: 26rpx;
   background-color:#fff;
 }
@@ -25,14 +27,13 @@
   display: none;
 }
 .flex-item-content-block.current{
-  display: block;
+  display: flex;
 }
 .item-shi{
   background-color:#fed547;
   border-radius: 10px;
-  display:inline-block;
   width:160rpx;
-  margin:8rpx;
-  padding:0 2rpx;
+  margin:25rpx 15rpx;
+  padding:5rpx 0;
   text-align:center;
 }

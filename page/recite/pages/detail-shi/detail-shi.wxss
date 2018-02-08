@@ -1,4 +1,4 @@
-/* page/recite/pages/detail-shi/detail-shi.wxss */
+@import "../../../common/index.wxss";
 .shi-word{
   display:inline-block;
   width:44rpx;

@@ -1,30 +1,24 @@
-<view class="container">
-  <view class="page-body">
-    <view class="page-section">
-      <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__bd">
-              <input class="weui-input" name="input" placeholder="搜索" />
-            </view>
-          </view>
-        </view>
+<view class="box contbox box-tb box-wrap">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="input" placeholder="搜索" />
+      </view>
     </view>
-    <view class="page-section">
-      <view class="flex-wrp" style="flex-direction:row;">
-        <view class="flex-item-menu">
-          <view class="flex-item-menu-nav {{item.id==current?'current':''}}" wx:for-items="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="changeType">
-            {{item.author}}
-          </view>
-        </view>
-        <view class="flex-item-content">
-          <view class="flex-item-content-block {{item.id==current?'current':''}}" wx:for-items="{{list}}" wx:key="{{item.id}}">
-            <view wx:for-items="{{item.data}}" wx:key="{{item.id}}" class="item-shi">
-              <navigator url="/page/recite/pages/detail-shi/detail-shi?id={{item.id}}">
-                {{item.title}}
-              </navigator>
-            </view>
-          </view>
-        </view>
+  </view>
+</view>
+<view class="box contbox box-lr box-nowrap flex-wrp">
+  <view class="flex-item-menu">
+    <view class="flex-item-menu-nav {{item.id==current?'current':''}}" wx:for-items="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="changeType">
+      {{item.author}}
+    </view>
+  </view>
+  <view class="flex-item-content">
+    <view class="box box-lr box-wrap flex-item-content-block {{item.id==current?'current':''}}" wx:for-items="{{list}}" wx:key="{{item.id}}">
+      <view wx:for-items="{{item.data}}" wx:key="{{item.id}}" class="item-shi">
+        <navigator url="/page/recite/pages/detail-shi/detail-shi?id={{item.id}}">
+          {{item.title}}
+        </navigator>
       </view>
     </view>
   </view>
