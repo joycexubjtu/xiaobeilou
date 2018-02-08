@@ -15,8 +15,8 @@
     </view> -->
   </view> 
   <view class='shi-bottom'>
-    <view class="shi-recite">
-      <view id="testPlay" bindtap='goTest' style="background-image:url({{testStatus?'../../resources/testPause.png':'../../resources/testPlay.png'}})"></view>
+    <view class="shi-recite" bindtap='goTest'>
+      <image id="testPlay" src="{{testStatus?'../../resources/testPause.png':'../../resources/testPlay.png'}}"></image>
     <text>{{testStatus?'结束测试':'开始测试'}}</text>
     </view>
   </view>

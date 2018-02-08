@@ -51,12 +51,10 @@
   color: #353535;
   font-weight: 600;
 }
-#testPlay{
+.shi-recite>image{
+  display: block;
   width:100rpx;
   height:100rpx;
-  background-position: center center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
   background-color: #fff;
   border-radius: 50%;
   box-shadow: 0 0 30px 0  rgba(4,3,6,.3);
