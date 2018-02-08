@@ -1,6 +1,6 @@
 <view class="page-container">
-  <view class="shi-box">
-    <view class="shi-title">
+   <view class="shi-box">
+    <!-- <view class="shi-title">
       {{title}}
     </view>
     <view class="shi-author">
@@ -12,9 +12,12 @@
           {{word}}
         </view>
       </view>
-    </view>
+    </view> -->
+  </view> 
+  <view class='shi-bottom'>
     <view class="shi-recite">
-      <image src="../../resources/btn-start.png" style="width:32px;height:32px;" bindtap="startRecite"></image>
+      <view id="testPlay" bindtap='goTest' style="background-image:url({{testStatus?'../../resources/testPause.png':'../../resources/testPlay.png'}})"></view>
+    <text>{{testStatus?'结束测试':'开始测试'}}</text>
     </view>
   </view>
 </view>

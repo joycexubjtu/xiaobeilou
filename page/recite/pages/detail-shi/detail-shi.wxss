@@ -5,7 +5,59 @@
   height:44rpx;
   margin-right:5rpx;
 }
-.shi-word.recite{
+/* .shi-word.recite{
   background-color:#fed547;
   color:#fed547;
+} */
+
+.shi-box{
+  position: relative;
+  width: 710rpx;
+  height: 920rpx;
+  margin:40rpx auto 0 auto;
+  background: #fed547;
+  border-radius: 25rpx;
+  box-shadow: 0 0 30px 0 rgba(4,3,6,.5);
+  z-index: 10;
+}
+.shi-bottom{
+  position: relative;
+  width: 650rpx;
+  height: 105rpx;
+  margin:auto;
+  background: #fff;
+  border-bottom-left-radius: 25rpx;
+  border-bottom-right-radius: 25rpx;
+  box-shadow: 0 0 30px 0  rgba(4,3,6,.3);
+  
+}
+
+.shi-recite{
+  position: absolute;
+  bottom:0rpx;
+  left:50%;
+  width: 100rpx;
+  height: 155rpx;
+  margin-left: -50rpx;
+  z-index: 20;
+}
+.shi-recite>text{
+  display: block;
+  width: 100rpx;
+  height: 50rpx;
+  font-size: 20rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #353535;
+  font-weight: 600;
+}
+#testPlay{
+  width:100rpx;
+  height:100rpx;
+  background-position: center center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 30px 0  rgba(4,3,6,.3);
 }

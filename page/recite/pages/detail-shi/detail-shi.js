@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    testStatus: false,
     recite : false,
     id : 1,
     title : '望庐山瀑布', 
@@ -19,6 +20,19 @@ Page({
     this.setData({
       recite: true
     })
+  },
+  goTest: function () {
+    let that = this;
+    if (that.data.testStatus === false) {
+      that.setData({
+        testStatus: true
+      })
+    } else {
+      that.setData({
+        testStatus: false
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面加载
