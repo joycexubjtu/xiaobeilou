@@ -68,15 +68,31 @@ const conf = {
       });
     }
   },
+  getDayStat(year, month) {
+    wx.request({
+      url: 'https://www.xjjstudy.com/index.php/stat/calendar', 
+      data: {
+        openid: app.globalData.openid,
+        year: year,
+        month: month
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res);
+      }
+    })
+  },
   calculateDays(year, month) {
     let days = [];
-
     const thisMonthDays = this.getThisMonthDays(year, month);
-
+    var dayStat = this.getDayStat(year, month);
     for (let i = 1; i <= thisMonthDays; i++) {
       days.push({
         day: i,
-        count: 0.5,
+        count: 0.1,
         choosed: false
       });
     }
@@ -85,6 +101,7 @@ const conf = {
       days
     });
   },
+
   handleCalendar(e) {
     const handle = e.currentTarget.dataset.handle;
     const cur_year = this.data.cur_year;
