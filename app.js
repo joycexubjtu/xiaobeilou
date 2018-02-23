@@ -53,12 +53,59 @@ App({
         }
       }
     })
+    
+    self.initData();
   },
   onShow: function () {
     console.log('App Show')
   },
   onHide: function () {
     console.log('App Hide')
+  },
+  requestData: function () {
+    wx.request({
+      url: 'https://www.xjjstudy.com/index.php/api/list', //获取所有古诗列表
+      data: {
+        sessionid: wx.getStorageSync('session_id')
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res);
+        var data = res.data.data;
+        //TODO:异常情况的处理
+        wx.setStorageSync({
+          key: "shi_count",
+          data: data.length
+        })
+        var shi_map = {};
+        for (var i = 0; i < data.length; i++) {
+          shi_map[data[i]['id']] = i;//记录id与index的对应关系
+        }
+        wx.setStorageSync({
+          key: "shi_map",
+          data: shi_map
+        })
+        wx.setStorageSync({
+          key: "shi_list",
+          data: data
+        })
+      }
+    })
+  },
+  initData: function () {
+    var self = this;
+    //self.requestData();
+    try {
+      var shi_data = wx.getStorageSync('shi_count');
+      if (!shi_data) {
+        self.requestData();
+      }
+    } catch (e) {
+      self.requestData();
+    }
   },
   globalData: {
     hasLogin: false,

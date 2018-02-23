@@ -1,15 +1,21 @@
 @import "../../../common/index.wxss";
 .shi-word{
-  display:inline-block;
   width:44rpx;
   height:44rpx;
-  margin-right:5rpx;
+  margin:0 3rpx;
 }
-/* .shi-word.recite{
+.shi-word.recite{
   background-color:#fed547;
   color:#fed547;
-} */
-
+}
+.shi-author{
+  width:200rpx;
+  margin:auto;
+}
+.shi-author.recite{
+  background-color:#fed547;
+  color:#fed547;
+}
 .shi-box{
   position: relative;
   width: 710rpx;
@@ -19,6 +25,10 @@
   border-radius: 25rpx;
   box-shadow: 0 0 30px 0 rgba(4,3,6,.5);
   z-index: 10;
+  text-align:center;
+}
+.shi-box.recite{
+  background:#fff;
 }
 .shi-bottom{
   position: relative;
@@ -58,4 +68,11 @@
   background-color: #fff;
   border-radius: 50%;
   box-shadow: 0 0 30px 0  rgba(4,3,6,.3);
+}
+.shi-title{
+  margin-top:44rpx;
+  margin-bottom:20px;
+}
+.shi-line{
+  margin-top:60rpx;
 }

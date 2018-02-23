@@ -43,7 +43,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var shi_list = wx.getStorageSync('shi_list');
+    var author_map = {}, id=1;
+    for (var i=0;i<shi_list.length;i++) {
+      var author = shi_list[i]['author'];
+      if (typeof (author_map[author])=='undefined' ) {
+        author_map[author] = {'id':id,'author': author, 'data' : []};
+        id ++;
+      }
+      author_map[author]['data'].push({id:shi_list[i]['id'], title:shi_list[i]['title']});
+    }
+    this.setData({
+      'list': author_map
+    })
   },
 
   /**

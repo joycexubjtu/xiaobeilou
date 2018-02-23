@@ -41,6 +41,17 @@ Page({
     this.setData({
       id: options.id
     })
+    var shi_list = wx.getStorageSync('shi_list');
+    var shi_map = wx.getStorageSync('shi_map');
+    var shi_index = shi_map[options.id];
+    var shi_detail = shi_list[shi_index];
+    var content_arr = shi_detail.content.split("\r\n");
+    this.setData({
+      id: options.id,
+      author: shi_detail.author,
+      title: shi_detail.title,
+      content: content_arr
+    })
   },
 
   /**

@@ -8,22 +8,24 @@ Page({
    */
   data: {
     hasUserInfo : true,
-    list: [
-      {
+    list: {
+      shi: {
         id: 'shi',
         name: '古诗词',
         desc:'共1首古诗',
         bgimg: 'bg-shi.png',
-        page: 'list-shi'
-      },
+        page: 'list-shi',
+        count: 0
+      }/*,
       {
         id: 'cheng',
         name: '乘法口诀',
         desc: '九九乘法表',
         bgimg: 'bg-cheng.png',
-        page: 'list-cheng'
-      },
-    ]
+        page: 'list-cheng',
+        count: 1
+      },*/
+    }
   },
 
   /**
@@ -56,6 +58,10 @@ Page({
         }
       })
     }
+    var shi_count = wx.getStorageSync('shi_count');
+    this.setData({
+      'list.shi.desc': '共' + shi_count +'首古诗'
+    })
     /*
     wx.request({
       url: 'https://www.xjjstudy.com/index.php/api/list', //仅为示例，并非真实的接口地址

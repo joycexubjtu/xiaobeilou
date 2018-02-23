@@ -123,6 +123,13 @@
 .fs36 {
   font-size: 36rpx;
 }
+.fs42 {
+  font-size: 42rpx;
+}
+
+.fs50 {
+  font-size: 50rpx;
+}
 
 .contbox {
   height: 120rpx;

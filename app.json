@@ -30,12 +30,6 @@
         "iconPath": "image/icon_stat.png",
         "selectedIconPath": "image/icon_stat_HL.png",
         "text": "记录"
-      },
-      {
-        "pagePath": "page/my/index",
-        "iconPath": "image/icon_my.png",
-        "selectedIconPath": "image/icon_my_HL.png",
-        "text": "我"
       }
     ]
   },
