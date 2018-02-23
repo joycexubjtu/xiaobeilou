@@ -1,4 +1,6 @@
+var util = require('../../../../util/util.js')
 // page/recite/pages/detail-shi/detail-shi.js
+const app = getApp()
 Page({
 
   /**
@@ -31,8 +33,40 @@ Page({
       that.setData({
         testStatus: false
       })
+      wx.showModal({
+        title: '背过了吗？',
+        content: '小朋友，如果背过了就点确定，没背过就点取消哦:)',
+        success: function (res) {
+          var result = 0;
+          if (!res.confirm) {
+            result = 1; //没背过
+          }
+          var res = {
+            recite_time: util.getCurrentDateTime(),
+            type:0,
+            result:result,
+            recite_target: that.data.id,
+            openid: app.globalData.openid
+          };
+          that.recordResult(res);
+        }
+      })
     }
 
+  },
+  recordResult: function(res) {
+    res['sessionid'] = wx.getStorageSync('session_id');
+    wx.request({
+      url: 'https://www.xjjstudy.com/index.php/api/record', //记录结果
+      data: res,
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载

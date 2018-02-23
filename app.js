@@ -8,7 +8,7 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        /*wx.request({
+        wx.request({
           url: 'https://www.xjjstudy.com/index.php/api/login', //仅为示例，并非真实的接口地址
           data: {
             code: res.code,
@@ -30,7 +30,7 @@ App({
             self.globalData.openid = data.openid;
             console.log(self.globalData);
           }
-        })*/
+        })
       }
     })
     // 获取用户信息
