@@ -68,9 +68,12 @@ const conf = {
       });
     }
   },
-  getDayStat(year, month) {
+  calculateDays(year, month) {
+    let days = [];
+    let that = this;
+    const thisMonthDays = this.getThisMonthDays(year, month);
     wx.request({
-      url: 'https://www.xjjstudy.com/index.php/stat/calendar', 
+      url: 'https://www.xjjstudy.com/index.php/stat/calendar',
       data: {
         openid: app.globalData.openid,
         year: year,
@@ -81,25 +84,29 @@ const conf = {
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        console.log(res);
+        var stat = res.data.data;
+        for (let i = 1; i <= thisMonthDays; i++) {
+          if (stat[i]) {
+            days.push({
+              day: i,
+              count: stat[i],
+              choosed: false
+            });
+          } else {
+            days.push({
+              day: i,
+              count: 0.1,
+              choosed: false
+            });
+          }
+        }
+
+        that.setData({
+          days
+        });
       }
     })
-  },
-  calculateDays(year, month) {
-    let days = [];
-    const thisMonthDays = this.getThisMonthDays(year, month);
-    var dayStat = this.getDayStat(year, month);
-    for (let i = 1; i <= thisMonthDays; i++) {
-      days.push({
-        day: i,
-        count: 0.1,
-        choosed: false
-      });
-    }
-
-    this.setData({
-      days
-    });
+    
   },
 
   handleCalendar(e) {
