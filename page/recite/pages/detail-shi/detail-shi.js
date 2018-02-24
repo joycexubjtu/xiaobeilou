@@ -30,9 +30,7 @@ Page({
         testStatus: true
       })
     } else {
-      that.setData({
-        testStatus: false
-      })
+      
       wx.showModal({
         title: '背过了吗？',
         content: '小朋友，如果背过了就点确定，没背过就点取消哦:)',
@@ -49,6 +47,9 @@ Page({
             openid: app.globalData.openid
           };
           that.recordResult(res);
+          that.setData({
+            testStatus: false
+          })
         }
       })
     }

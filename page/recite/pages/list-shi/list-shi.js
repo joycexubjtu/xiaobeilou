@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    inputVal: "",
+    inputShowed: false,
     current : 1,
+    group: 'author',
+    dataset: [],
     list: [
       {
         id: 1,
@@ -31,10 +35,60 @@ Page({
       }
     ]
   },
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });  
+    //this.changeGroup();
+  },
+  clearInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    }); 
+    this.changeGroup(); 
+  },
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });  
+  },
+  searchData: function () {
+    this.changeGroup();
+  },
   changeType: function (event) {
     var id = event.currentTarget.dataset.id;
     console.log(id);
     this.setData({current:id});
+  },
+  changeTab: function (event) {
+    var group = event.currentTarget.dataset.group;
+    this.setData({
+      'group': group
+    })
+    this.changeGroup();暂时先不实时搜索了
+  },
+  changeGroup: function () {
+    var shi_list = this.data.dataset;
+    var group = this.data.group;
+    var group_map = {}, id = 1;
+    for (var i = 0; i < shi_list.length; i++) {
+      var groupval = shi_list[i][group];
+      if (this.data.inputVal != "") {
+        if (groupval.indexOf(this.data.inputVal) == -1 && shi_list[i]['title'].indexOf(this.data.inputVal) == -1 && shi_list[i]['dynasty'].indexOf(this.data.inputVal) == -1) {
+          continue;
+        }
+      } 
+      if (typeof (group_map[groupval]) == 'undefined') {
+        group_map[groupval] = { 'id': id, 'group': groupval, 'data': [] };
+        id++;
+      }
+      group_map[groupval]['data'].push({ id: shi_list[i]['id'], title: shi_list[i]['title'] });
+    }
+    this.setData({
+      'list': group_map,
+      'group': group
+    })
   },
   onReady: function(event) {
     
@@ -43,19 +97,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var shi_list = wx.getStorageSync('shi_list');
-    var author_map = {}, id=1;
-    for (var i=0;i<shi_list.length;i++) {
-      var author = shi_list[i]['author'];
-      if (typeof (author_map[author])=='undefined' ) {
-        author_map[author] = {'id':id,'author': author, 'data' : []};
-        id ++;
-      }
-      author_map[author]['data'].push({id:shi_list[i]['id'], title:shi_list[i]['title']});
-    }
     this.setData({
-      'list': author_map
+      'dataset': wx.getStorageSync('shi_list')
     })
+    this.changeGroup();
   },
 
   /**

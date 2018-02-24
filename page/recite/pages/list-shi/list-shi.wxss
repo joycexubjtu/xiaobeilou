@@ -1,7 +1,9 @@
 @import "../../../common/lib/weui.wxss";
 @import "../../../common/index.wxss";
+.list-box{
+  background-color:#efeff4;
+}
 .flex-wrp{
-  margin-top: 30rpx;
   display:flex;
   height: 100%;
 }
@@ -32,8 +34,23 @@
 .item-shi{
   background-color:#fed547;
   border-radius: 10px;
-  width:160rpx;
   margin:25rpx 15rpx;
-  padding:5rpx 0;
+  padding:5rpx 10px;
   text-align:center;
+}
+.weui-input{
+  margin:15rpx;
+  border-radius:27rpx;
+  height:55rpx;
+  background-color:#fff;
+  text-align:center;
+}
+.tab{
+  width:375rpx;
+  height:60rpx;
+  border-bottom:1px solid #efeff4;
+  text-align:center;
+}
+.tab.current{
+  border-bottom:1px solid #fed547;
 }
