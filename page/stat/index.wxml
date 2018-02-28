@@ -1,6 +1,6 @@
 <view class="box box-lr box-nowrap list-box">
   <view class="tab {{showtype=='stat'?'current':''}}" data-type="stat" bindtap="changeTab">
-    背诵记录
+    背诵统计
   </view>
   <view class="tab {{showtype=='history'?'current':''}}" data-type="history" bindtap="changeTab">
     历史清单
@@ -58,29 +58,36 @@
   </view>
 </view>
 <view hidden="{{showtype=='history'? false : true}}" class="flex box box-tb historybox">
-  <view class="historytitle">
+  <!--<view class="historytitle">
     历史记录（{{recite}}）
-  </view>
-  <view class="daygroup" wx:for-items="{{history}}" wx:key="{{item.day}}">
-    <view class="daytitle">
-      {{item.day}}
+  </view>-->
+  <view class="history-list">
+    <view class="sidebar">
     </view>
-    <view class="daydetail">
-      <view class="flex box box-lr timedetail" wx:for-items="{{item.list}}" wx:key="{{item.time}}">
-        <view class="time">
-          {{item.time}}
+    <view class="daygroup" wx:for-items="{{history}}" wx:key="{{item.day}}">
+      <view class="flex box box-lr box-align-center daytitle">
+        <view class="day-icon">
         </view>
-        <view class="action">
-          背了
+        <view class="day-desc">
+          {{item.day}}
         </view>
-        <view class="target_type">
-          古诗
-        </view>
-        <view class="target_title">
-          {{item.title}}
-        </view>
-        <view class="result">
-          {{item.result}}
+      </view>
+      <view class="daydetail">
+        <view class="flex box box-lr box-align-center timedetail" wx:for-items="{{item.list}}" wx:key="{{item.time}}">
+          <view class="time">
+            {{item.time}}
+          </view>
+          <view class="action">
+            背了
+          </view>
+          <view class="target_type">
+            古诗
+          </view>
+          <view class="target_title">
+            {{item.title}}
+          </view>
+          <view class="result {{item.result==0?'success':'failed'}}">
+          </view>
         </view>
       </view>
     </view>
