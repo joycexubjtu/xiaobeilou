@@ -345,3 +345,24 @@
   color: #353535;
   text-align: center;
 }
+
+.historybox{
+  margin-top:10rpx;
+  background-color:#fafafa;
+}
+.historytitle{
+  height:65rpx;
+  padding-left:20rpx;
+  text-align:left;
+  border-top:1rpx solid #eee;
+  border-bottom:1rpx solid #eee;
+}
+.tab{
+  width:375rpx;
+  height:60rpx;
+  border-bottom:1px solid #efeff4;
+  text-align:center;
+}
+.tab.current{
+  border-bottom:1px solid #fed547;
+}

@@ -1,5 +1,7 @@
 'use strict';
-const app = getApp()
+const app = getApp();
+const appConfig = require('../../config');
+
 let choose_year = null,
   choose_month = null;
 const conf = {
@@ -8,6 +10,8 @@ const conf = {
     showPicker: false,
     recite: 0,
     recited:0,
+    showtype: 'stat',
+    history:[]
   },
   onLoad() {
     const date = new Date();
@@ -23,7 +27,7 @@ const conf = {
     });
     let that = this;
     wx.request({
-      url: 'https://www.xjjstudy.com/index.php/stat/', //仅为示例，并非真实的接口地址
+      url: appConfig.totalStat, //仅为示例，并非真实的接口地址
       data: {
         sessionid: wx.getStorageSync('session_id'),
         openid: app.globalData.openid
@@ -39,6 +43,36 @@ const conf = {
           that.setData({
             recite: data.summary.total_cnt,
             recited: data.summary.success_cnt
+          });
+        }
+      }
+    })
+    that.getHistory();
+  },
+  changeTab: function (event) {
+    var showtype = event.currentTarget.dataset.type;
+    this.setData({
+      'showtype': showtype
+    })
+  },
+  getHistory() {
+    let that = this;
+    wx.request({
+      url: appConfig.historyStat, 
+      data: {
+        sessionid: wx.getStorageSync('session_id'),
+        openid: app.globalData.openid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.status === 0) {
+          let data = res.data.data;
+          that.setData({
+            history: data
           });
         }
       }
@@ -73,9 +107,10 @@ const conf = {
     let that = this;
     const thisMonthDays = this.getThisMonthDays(year, month);
     wx.request({
-      url: 'https://www.xjjstudy.com/index.php/stat/calendar',
+      url: appConfig.calendarStat,
       data: {
         openid: app.globalData.openid,
+        sessionid: wx.getStorageSync('session_id'),
         year: year,
         month: month
       },

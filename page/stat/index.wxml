@@ -1,49 +1,88 @@
-<view class="box contbox box-tb box-wrap">
-  <view class='flex box box-align-center box-pack-center contcbox'>
-    <text class='fs26'>{{recite}}\n<text class='fs24 gray-color'>背诵次数</text></text>
+<view class="box box-lr box-nowrap list-box">
+  <view class="tab {{showtype=='stat'?'current':''}}" data-type="stat" bindtap="changeTab">
+    背诵记录
   </view>
-  <view class='flex box box-align-center box-pack-center contcbox'>
-    <text class='fs26'>{{recited}}\n<text class='fs24 gray-color'>背过次数</text></text>
-  </view>
-</view>
-
-<view class="flex box box-tb box-align-center calendarbox">
-  <view class="calendar box box-tb">
-    <view class="top-handle fs28 box box-lr box-align-center box-pack-center">
-      <view class="prev box box-rl" bindtap="handleCalendar" data-handle="prev">
-        <view class="prev-handle box box-lr box-align-center box-pack-center fs24">《</view>
-      </view>
-      <view bindtap="chooseYearAndMonth" class="date-area box box-lr box-align-center box-pack-center fs24">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
-      <view class="next box box-lr" bindtap="handleCalendar" data-handle="next">
-        <view class="next-handle box box-lr box-align-center box-pack-center fs24">》</view>
-      </view>
-    </view>
-    <view class="weeks box box-lr box-pack-center box-align-center">
-      <view class="flex week fs24" wx:for="{{weeks_ch}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
-    </view>
-    <view class="days box box-lr box-wrap">
-      <view wx:if="{{hasEmptyGrid}}" class="grid white-color box box-align-center box-pack-center" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
-      </view>
-      <view class="grid box box-align-center box-pack-center" wx:for="{{days}}" wx:key="{{index}}" data-idx="{{index}}">
-        <view class="day white-color {{item.choosed ? 'pink-bg' : ''}} box box-align-center box-pack-center fs24" style="background-color:rgba(254,213,71,{{item.count}});">{{item.day}}</view>
-      </view>
-    </view>
+  <view class="tab {{showtype=='history'?'current':''}}" data-type="history" bindtap="changeTab">
+    历史清单
   </view>
 </view>
-
-
-
-<view wx:if="{{showPicker}}" class="box box-tb">
-  <view class="picker-btns box box-lr box-pack-between box-align-center">
-    <view class="picker-btn picker-cancel fs26" data-type="cancel" bindtap="tapPickerBtn">取消</view>
-    <view class="picker-btn picker-confirm fs26" data-type="confirm" bindtap="tapPickerBtn">确定</view>
+<view hidden="{{showtype=='stat'? false : true}}">
+  <view class="box contbox box-tb box-wrap">
+    <view class='flex box box-align-center box-pack-center contcbox'>
+      <text class='fs26'>{{recite}}\n<text class='fs24 gray-color'>背诵次数</text></text>
+    </view>
+    <view class='flex box box-align-center box-pack-center contcbox'>
+      <text class='fs26'>{{recited}}\n<text class='fs24 gray-color'>背过次数</text></text>
+    </view>
   </view>
-  <picker-view class="flex" indicator-style="height: 50px;" style="width: 100%; height: 150px;" value="{{picker_value}}" bindchange="pickerChange">
-    <picker-view-column>
-      <view class="picker-view fs24" wx:key="{{index}}" wx:for="{{picker_year}}" style="line-height: 50px">{{item}}年</view>
-    </picker-view-column>
-    <picker-view-column>
-      <view class="picker-view fs24" wx:key="{{index}}" wx:for="{{picker_month}}" style="line-height: 50px">{{item}}月</view>
-    </picker-view-column>
-  </picker-view>
+
+  <view class="flex box box-tb box-align-center calendarbox">
+    <view class="calendar box box-tb">
+      <view class="top-handle fs28 box box-lr box-align-center box-pack-center">
+        <view class="prev box box-rl" bindtap="handleCalendar" data-handle="prev">
+          <view class="prev-handle box box-lr box-align-center box-pack-center fs24">《</view>
+        </view>
+        <view bindtap="chooseYearAndMonth" class="date-area box box-lr box-align-center box-pack-center fs24">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
+        <view class="next box box-lr" bindtap="handleCalendar" data-handle="next">
+          <view class="next-handle box box-lr box-align-center box-pack-center fs24">》</view>
+        </view>
+      </view>
+      <view class="weeks box box-lr box-pack-center box-align-center">
+        <view class="flex week fs24" wx:for="{{weeks_ch}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+      </view>
+      <view class="days box box-lr box-wrap">
+        <view wx:if="{{hasEmptyGrid}}" class="grid white-color box box-align-center box-pack-center" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
+        </view>
+        <view class="grid box box-align-center box-pack-center" wx:for="{{days}}" wx:key="{{index}}" data-idx="{{index}}">
+          <view class="day white-color {{item.choosed ? 'pink-bg' : ''}} box box-align-center box-pack-center fs24" style="background-color:rgba(254,213,71,{{item.count}});">{{item.day}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+  <view wx:if="{{showPicker}}" class="box box-tb">
+    <view class="picker-btns box box-lr box-pack-between box-align-center">
+      <view class="picker-btn picker-cancel fs26" data-type="cancel" bindtap="tapPickerBtn">取消</view>
+      <view class="picker-btn picker-confirm fs26" data-type="confirm" bindtap="tapPickerBtn">确定</view>
+    </view>
+    <picker-view class="flex" indicator-style="height: 50px;" style="width: 100%; height: 150px;" value="{{picker_value}}" bindchange="pickerChange">
+      <picker-view-column>
+        <view class="picker-view fs24" wx:key="{{index}}" wx:for="{{picker_year}}" style="line-height: 50px">{{item}}年</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view class="picker-view fs24" wx:key="{{index}}" wx:for="{{picker_month}}" style="line-height: 50px">{{item}}月</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</view>
+<view hidden="{{showtype=='history'? false : true}}" class="flex box box-tb historybox">
+  <view class="historytitle">
+    历史记录（{{recite}}）
+  </view>
+  <view class="daygroup" wx:for-items="{{history}}" wx:key="{{item.day}}">
+    <view class="daytitle">
+      {{item.day}}
+    </view>
+    <view class="daydetail">
+      <view class="flex box box-lr timedetail" wx:for-items="{{item.list}}" wx:key="{{item.time}}">
+        <view class="time">
+          {{item.time}}
+        </view>
+        <view class="action">
+          背了
+        </view>
+        <view class="target_type">
+          古诗
+        </view>
+        <view class="target_title">
+          {{item.title}}
+        </view>
+        <view class="result">
+          {{item.result}}
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

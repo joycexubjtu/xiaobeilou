@@ -1,15 +1,14 @@
-const openIdUrl = require('./config').openIdUrl
+const appConfig = require('./config');
 
 App({
   onLaunch: function () {
     var self = this;
-    console.log('App Launch')
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
-          url: 'https://www.xjjstudy.com/index.php/api/login', //仅为示例，并非真实的接口地址
+          url: appConfig.loginUrl, 
           data: {
             code: res.code,
             sessionid: wx.getStorageSync('session_id')
@@ -22,13 +21,11 @@ App({
             console.log(res);
             var data = res.data;
             //TODO:异常情况的处理
-            wx.setStorage({
-              key: "session_id",
-              data: data.sessionid
-            })
+            wx.setStorageSync("session_id", data.sessionid);
             self.globalData.hasLogin = true;
             self.globalData.openid = data.openid;
-            console.log(self.globalData);
+            //初始化数据
+            self.initData();
           }
         })
       }
@@ -54,7 +51,6 @@ App({
       }
     })
     
-    self.initData();
   },
   onShow: function () {
     console.log('App Show')
@@ -64,7 +60,7 @@ App({
   },
   requestData: function () {
     wx.request({
-      url: 'https://www.xjjstudy.com/index.php/api/list', //获取所有古诗列表
+      url: appConfig.shiListUrl, //获取所有古诗列表
       data: {
         sessionid: wx.getStorageSync('session_id')
       },
@@ -83,29 +79,33 @@ App({
         }
         wx.setStorageSync("shi_map", shi_map);
         wx.setStorageSync("shi_list", data);
-        /*wx.setStorageSync({
-          key: "shi_map",
-          data: shi_map
-        })
-        wx.setStorageSync({
-          key: "shi_list",
-          data: data
-        })*/
-
       }
     })
   },
   initData: function () {
     var self = this;
-    //self.requestData();
-    try {
-      var shi_data = wx.getStorageSync('shi_count');
-      if (!shi_data) {
-        self.requestData();
+    wx.request({
+      url: appConfig.shiCountUrl, //获取所有古诗个数
+      data: {
+        sessionid: wx.getStorageSync('session_id')
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res);
+        var remote_count = res.data.data;
+        try {
+          var local_count = wx.getStorageSync('shi_count');
+          if (!local_count || local_count != remote_count) {
+            self.requestData();
+          }
+        } catch (e) {
+          self.requestData();
+        }
       }
-    } catch (e) {
-      self.requestData();
-    }
+    })
   },
   globalData: {
     hasLogin: false,
