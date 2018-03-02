@@ -59,10 +59,12 @@ App({
     console.log('App Hide')
   },
   requestData: function () {
+    var self = this;
     wx.request({
       url: appConfig.shiListUrl, //获取所有古诗列表
       data: {
-        sessionid: wx.getStorageSync('session_id')
+        sessionid: wx.getStorageSync('session_id'),
+        openid: self.globalData.openid
       },
       method: 'POST',
       header: {
@@ -84,7 +86,8 @@ App({
   },
   initData: function () {
     var self = this;
-    wx.request({
+    self.requestData();
+    /*wx.request({
       url: appConfig.shiCountUrl, //获取所有古诗个数
       data: {
         sessionid: wx.getStorageSync('session_id')
@@ -105,7 +108,7 @@ App({
           self.requestData();
         }
       }
-    })
+    })*/
   },
   globalData: {
     hasLogin: false,

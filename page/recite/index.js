@@ -11,7 +11,7 @@ Page({
     list: {
       shi: {
         id: 'shi',
-        name: '古诗词',
+        name: '小学生必备古诗词',
         desc:'共1首古诗',
         bgimg: 'bg-shi.png',
         page: 'list-shi',
@@ -60,7 +60,7 @@ Page({
     }
     var shi_count = wx.getStorageSync('shi_count');
     this.setData({
-      'list.shi.desc': '共' + shi_count +'首古诗'
+      'list.shi.desc': '共' + shi_count +'首'
     })
     /*
     wx.request({

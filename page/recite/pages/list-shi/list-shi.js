@@ -8,7 +8,7 @@ Page({
     inputVal: "",
     inputShowed: false,
     current : 1,
-    group: 'author',
+    group: 'period',
     dataset: [],
     list: [
       {
@@ -58,7 +58,6 @@ Page({
   },
   changeType: function (event) {
     var id = event.currentTarget.dataset.id;
-    console.log(id);
     this.setData({current:id});
   },
   changeTab: function (event) {
@@ -66,13 +65,23 @@ Page({
     this.setData({
       'group': group
     })
-    this.changeGroup();暂时先不实时搜索了
+    this.changeGroup();
   },
   changeGroup: function () {
     var shi_list = this.data.dataset;
     var group = this.data.group;
     var group_map = {}, id = 1;
+    if (group=='period') {
+      group_map = { 
+                    '未背诵': { 'id': 1, 'group': '未背诵', 'data': [] },
+                    '萌芽': { 'id': 2, 'group': '萌芽', 'data': [] },
+                    '生长': { 'id': 3, 'group': '生长', 'data': [] },
+                    '成熟': { 'id': 4, 'group': '成熟', 'data': [] },
+                    '采摘': { 'id': 5, 'group': '采摘', 'data': [] },
+                  }; 
+    }
     for (var i = 0; i < shi_list.length; i++) {
+      
       var groupval = shi_list[i][group];
       if (this.data.inputVal != "") {
         if (groupval.indexOf(this.data.inputVal) == -1 && shi_list[i]['title'].indexOf(this.data.inputVal) == -1 && shi_list[i]['dynasty'].indexOf(this.data.inputVal) == -1) {
@@ -87,7 +96,8 @@ Page({
     }
     this.setData({
       'list': group_map,
-      'group': group
+      'group': group,
+      'current': 1
     })
   },
   onReady: function(event) {

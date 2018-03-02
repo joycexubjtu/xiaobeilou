@@ -13,10 +13,7 @@ Page({
     title : '望庐山瀑布', 
     author : '李白',
     dynasty : '唐',
-    content: [['日', '照', '香', '炉', '生', '紫','烟，'], 
-      ['遥', '看', '瀑', '布', '挂', '前','川，'], 
-      ['飞', '流', '直', '下', '三', '千','尺，'],
-      ['疑', '是', '银', '河', '落', '九','天。']]
+    content: []
   },
   startRecite: function(event) {
     this.setData({
@@ -85,8 +82,10 @@ Page({
       id: options.id,
       author: shi_detail.author,
       title: shi_detail.title,
+      dynasty: shi_detail.dynasty,
       content: content_arr
     })
+    console.log(this.data);
   },
 
   /**

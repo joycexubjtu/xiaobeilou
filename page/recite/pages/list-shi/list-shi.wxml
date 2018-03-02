@@ -16,11 +16,14 @@
   </view>  
 
 <view class="box box-lr box-nowrap list-box">
-  <view class="tab {{group=='author'?'current':''}}" data-group="author" bindtap="changeTab">
-    作者
+  <view class="tab {{group=='period'?'current':''}}" data-group="period" bindtap="changeTab">
+    背诵阶段
   </view>
   <view class="tab {{group=='dynasty'?'current':''}}" data-group="dynasty" bindtap="changeTab">
     朝代
+  </view>
+  <view class="tab {{group=='author'?'current':''}}" data-group="author" bindtap="changeTab">
+    作者
   </view>
 </view>
 <view class="box contbox box-lr box-nowrap flex-wrp">
