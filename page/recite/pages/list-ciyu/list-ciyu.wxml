@@ -1,0 +1,42 @@
+<view class="weui-search-bar">  
+  <view class="weui-search-bar__form">  
+      <view class="weui-search-bar__box">  
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>  
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping"/> 
+          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">  
+              <icon type="clear" size="14"></icon>  
+          </view>  
+      </view>  
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">  
+          <icon class="weui-icon-search" type="search" size="14"></icon>  
+          <view class="weui-search-bar__text">搜索</view>  
+      </label>  
+  </view>  
+  <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="searchData">搜索</view>  
+  </view>  
+
+<view class="box box-lr box-nowrap list-box">
+  <view class="tab {{group=='unit'?'current':''}}" data-group="unit" bindtap="changeTab">
+    单元
+  </view>
+  <view class="tab {{group=='course'?'current':''}}" data-group="course" bindtap="changeTab">
+    课时
+  </view>
+  <view class="tab {{group=='keyword'?'current':''}}" data-group="keyword" bindtap="changeTab">
+    关键字
+  </view>
+</view>
+<view class="box contbox box-lr box-nowrap flex-wrp">
+  <scroll-view scroll-y class="flex-item-menu">
+    <view class="flex-item-menu-nav {{item.id==current?'current':''}}" wx:for-items="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="changeType">
+      {{item.group}}
+    </view>
+  </scroll-view>
+  <scroll-view scroll-y class="flex-item-content">
+    <view class="box box-lr box-wrap flex-item-content-block {{item.id==current?'current':''}}" wx:for-items="{{list}}" wx:key="{{item.id}}">
+      <view wx:for-items="{{item.data}}" wx:key="{{item.id}}" class="item-shi">
+        {{item.title}}
+      </view>
+    </view>
+  </scroll-view>
+</view>

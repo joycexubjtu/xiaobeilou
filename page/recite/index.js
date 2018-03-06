@@ -1,4 +1,5 @@
 // page/recite/index.js
+const appConfig = require('../../config');
 //获取应用实例
 const app = getApp()
 Page({
@@ -12,19 +13,19 @@ Page({
       shi: {
         id: 'shi',
         name: '小学生必备古诗词',
-        desc:'共1首古诗',
+        desc:'共75首古诗',
         bgimg: 'bg-shi.png',
         page: 'list-shi',
         count: 0
-      }/*,
-      {
-        id: 'cheng',
-        name: '乘法口诀',
-        desc: '九九乘法表',
-        bgimg: 'bg-cheng.png',
-        page: 'list-cheng',
+      },
+      ciyu: {
+        id: 'ciyu',
+        name: '二年级下必会词语（人教版）',
+        desc: '',
+        bgimg: 'bg-shi.png',
+        page: 'list-ciyu',
         count: 1
-      },*/
+      },
     }
   },
 
@@ -59,23 +60,11 @@ Page({
       })
     }
     var shi_count = wx.getStorageSync('shi_count');
-    this.setData({
-      'list.shi.desc': '共' + shi_count +'首'
-    })
-    /*
-    wx.request({
-      url: 'https://www.xjjstudy.com/index.php/api/list', //仅为示例，并非真实的接口地址
-      data: {
-        x: '',
-        y: ''
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        console.log(res.data)
-      }
-    })*/
+    if (shi_count) {
+      this.setData({
+        'list.shi.desc': '共' + shi_count + '首'
+      })
+    } 
   },
   
   getUserInfo: function (e) {

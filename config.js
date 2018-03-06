@@ -26,6 +26,9 @@ var config = {
 
   // 历史统计
   historyStat: `https://${host}/index.php/stat/history`,
+
+  // 获取所有数据列表
+  listUrl: `https://${host}/index.php/api/alldata`,
 };
 
 module.exports = config

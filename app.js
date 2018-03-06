@@ -61,10 +61,9 @@ App({
   requestData: function () {
     var self = this;
     wx.request({
-      url: appConfig.shiListUrl, //获取所有古诗列表
+      url: appConfig.listUrl, //获取所有数据列表
       data: {
-        sessionid: wx.getStorageSync('session_id'),
-        openid: self.globalData.openid
+        sessionid: wx.getStorageSync('session_id')
       },
       method: 'POST',
       header: {
@@ -72,15 +71,23 @@ App({
       },
       success: function (res) {
         console.log(res);
-        var data = res.data.data;
+        var shi = res.data.data.shi;
         //TODO:异常情况的处理
-        wx.setStorageSync("shi_count",data.length);
+        wx.setStorageSync("shi_count", shi.length);
         var shi_map = {};
-        for (var i = 0; i < data.length; i++) {
-          shi_map[data[i]['id']] = i;//记录id与index的对应关系
+        for (var i = 0; i < shi.length; i++) {
+          shi_map[shi[i]['id']] = i;//记录id与index的对应关系
         }
         wx.setStorageSync("shi_map", shi_map);
-        wx.setStorageSync("shi_list", data);
+        wx.setStorageSync("shi_list", shi);
+        var ciyu = res.data.data.ciyu;
+        wx.setStorageSync("ciyu_count", ciyu.length);
+        var ciyu_map = {};
+        for (var i = 0; i < ciyu.length; i++) {
+          ciyu_map[ciyu[i]['id']] = i;//记录id与index的对应关系
+        }
+        wx.setStorageSync("ciyu_map", ciyu_map);
+        wx.setStorageSync("ciyu_list", ciyu);
       }
     })
   },

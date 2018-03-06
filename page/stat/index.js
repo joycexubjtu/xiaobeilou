@@ -29,8 +29,7 @@ const conf = {
     wx.request({
       url: appConfig.totalStat, //仅为示例，并非真实的接口地址
       data: {
-        sessionid: wx.getStorageSync('session_id'),
-        openid: app.globalData.openid
+        sessionid: wx.getStorageSync('session_id')
       },
       method: 'POST',
       header: {
@@ -60,8 +59,7 @@ const conf = {
     wx.request({
       url: appConfig.historyStat, 
       data: {
-        sessionid: wx.getStorageSync('session_id'),
-        openid: app.globalData.openid
+        sessionid: wx.getStorageSync('session_id')
       },
       method: 'POST',
       header: {
@@ -109,7 +107,6 @@ const conf = {
     wx.request({
       url: appConfig.calendarStat,
       data: {
-        openid: app.globalData.openid,
         sessionid: wx.getStorageSync('session_id'),
         year: year,
         month: month

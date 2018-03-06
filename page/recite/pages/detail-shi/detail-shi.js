@@ -10,9 +10,9 @@ Page({
     testStatus: false,
     recite : false,
     id : 1,
-    title : '望庐山瀑布', 
-    author : '李白',
-    dynasty : '唐',
+    title : '', 
+    author : '',
+    dynasty : '',
     content: []
   },
   startRecite: function(event) {
@@ -30,7 +30,7 @@ Page({
       
       wx.showModal({
         title: '背过了吗？',
-        content: '小朋友，如果背过了就点确定，没背过就点取消哦:)',
+        content: '如果背过了就点确定，没背过就点取消哦',
         success: function (res) {
           var result = 0;
           if (!res.confirm) {
