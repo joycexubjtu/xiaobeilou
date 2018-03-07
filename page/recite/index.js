@@ -22,7 +22,7 @@ Page({
         id: 'ciyu',
         name: '二年级下必会词语（人教版）',
         desc: '',
-        bgimg: 'bg-shi.png',
+        bgimg: 'bg-ciyu.png',
         page: 'list-ciyu',
         count: 1
       },

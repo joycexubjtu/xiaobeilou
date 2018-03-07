@@ -409,3 +409,6 @@
   border-radius: 10rpx;
   background-color:red;
 }
+.timedetail{
+  margin-top:10rpx;
+}
