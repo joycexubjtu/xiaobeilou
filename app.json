@@ -6,7 +6,8 @@
     "page/recite/pages/list-shi/list-shi",
     "page/recite/pages/list-cheng/list-cheng",
     "page/recite/pages/detail-shi/detail-shi",
-    "page/recite/pages/list-ciyu/list-ciyu"
+    "page/recite/pages/list-ciyu/list-ciyu",
+    "page/recite/pages/detail-shi-stat/detail-shi-stat"
   ],
   "window": {
     "navigationBarTextStyle": "black",

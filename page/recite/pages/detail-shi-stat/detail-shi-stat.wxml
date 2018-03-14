@@ -1,0 +1,63 @@
+<view class="box box-tb">
+  <view class="tree-box">
+    <view class="shi">
+      {{title}}
+    </view>
+    <view class="tree-bg">
+      <image src="../../resources/bg-shi-1.png"></image>
+    </view>
+    <view class="tree-bottom">
+    </view>
+    <view class="tree">
+      <image src="../../resources/{{period}}.png"></image>
+    </view>
+    <view class="process-bar">
+      <view class="bar-bg">
+        <view class="bar" style="width:{{count*100/21}}%">
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{count > 0}}" class="process-text"> 
+      哇哦～～ 你已经背诵了{{count}}次啦！ 
+    </view>
+    <view wx:else class="process-text">
+      还没开始背诵哦，快开始吧！
+    </view>
+  </view>
+  <view class="flex box box-tb historybox">
+    <view class="historytitle">
+      历史记录（{{count}}）
+    </view>
+    <view class="history-list">
+      <view class="sidebar">
+      </view>
+      <view class="daygroup" wx:for-items="{{history}}" wx:key="{{item.day}}">
+        <view class="flex box box-lr box-align-center daytitle">
+          <view class="day-icon">
+          </view>
+          <view class="day-desc">
+            {{item.day}}
+          </view>
+        </view>
+        <view class="daydetail">
+          <view class="flex box box-lr box-align-center timedetail" wx:for-items="{{item.list}}" wx:key="{{item.time}}">
+            <view class="time">
+              {{item.time}}
+            </view>
+            <view class="action">
+              背了
+            </view>
+            <view class="target_type">
+              古诗
+            </view>
+            <view class="target_title">
+              {{item.title}}
+            </view>
+            <view class="result {{item.result==0?'success':'failed'}}">
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

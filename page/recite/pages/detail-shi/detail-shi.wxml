@@ -1,5 +1,10 @@
 <view class="box box-tb">
    <view class="shi-box {{testStatus?'recite':''}}">
+    <view class="shi-detail">
+      <navigator url="/page/recite/pages/detail-shi-stat/detail-shi-stat?id={{id}}">
+        <image src="../../resources/record.png"></image>
+      </navigator>
+    </view>
     <view class="fs50 shi-title">
       {{title}}
     </view>

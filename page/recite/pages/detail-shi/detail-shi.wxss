@@ -76,3 +76,12 @@
 .shi-line{
   margin-top:60rpx;
 }
+.shi-detail{
+  position:absolute;
+  top:50rpx;
+  right:30rpx;
+}
+.shi-detail image{
+  width:40rpx;
+  height:40rpx;
+}
