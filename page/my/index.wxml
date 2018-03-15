@@ -1,2 +1,7 @@
-<!--page/my/index.wxml-->
-<text>page/my/index.wxml</text>
+<view class="box box-tb c-box">
+  <text style="padding:60rpx 30rpx;;">如果您在使用过程中遇到问题，请公众号留言。</text>
+  <view>
+    <image src="../../image/gzh.png"></image>
+  </view>
+  <text style="padding:60rpx 30rpx;">新手入门、升级历史，请移步公众号历史文章。</text>
+</view>

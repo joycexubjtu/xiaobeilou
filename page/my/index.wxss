@@ -1,2 +1,10 @@
-/* page/my/index.wxss */
 @import "../common/index.wxss";
+.c-box{
+  background-color:#eee;
+  text-align:center;
+  height:100%;
+}
+image{
+  width:300rpx;
+  height:300rpx;
+}

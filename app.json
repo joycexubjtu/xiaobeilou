@@ -32,6 +32,12 @@
         "iconPath": "image/icon_stat.png",
         "selectedIconPath": "image/icon_stat_HL.png",
         "text": "记录"
+      },
+      {
+        "pagePath": "page/my/index",
+        "iconPath": "image/icon_c.png",
+        "selectedIconPath": "image/icon_c_HL.png",
+        "text": "联系我"
       }
     ]
   },
