@@ -13,30 +13,72 @@
       </label>  
   </view>  
   <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="searchData">搜索</view>  
-  </view>  
-
-<view class="box box-lr box-nowrap list-box">
-  <view class="tab {{group=='unit'?'current':''}}" data-group="unit" bindtap="changeTab">
-    单元
-  </view>
-  <view class="tab {{group=='course'?'current':''}}" data-group="course" bindtap="changeTab">
-    课时
-  </view>
-  <view class="tab {{group=='keyword'?'current':''}}" data-group="keyword" bindtap="changeTab">
-    关键字
-  </view>
-</view>
+</view>  
 <view class="box contbox box-lr box-nowrap flex-wrp">
   <scroll-view scroll-y class="flex-item-menu">
-    <view class="flex-item-menu-nav {{item.id==current?'current':''}}" wx:for-items="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="changeType">
-      {{item.group}}
+    <view class="flex-item-menu-nav {{item.id==unit?'current':''}}" wx:for-items="{{dataset}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="changeUnit">
+      {{item.unit}}
     </view>
   </scroll-view>
   <scroll-view scroll-y class="flex-item-content">
-    <view class="box box-lr box-wrap flex-item-content-block {{item.id==current?'current':''}}" wx:for-items="{{list}}" wx:key="{{item.id}}">
-      <view wx:for-items="{{item.data}}" wx:key="{{item.id}}" class="item-shi">
-        {{item.title}}
+    <view class="box box-lr box-wrap flex-item-content-block course-list {{item.id==unit?'current':''}}" wx:for-items="{{dataset}}" wx:key="{{item.id}}">
+      <view wx:for-items="{{item.courseList}}" wx:key="{{item.id}}" class="box box-lr box-wrap xbl-ckb">
+        <view class="ckb-label" data-id="{{item.id}}" bindtap="checkCourse">
+          <image src="../../resources/{{courseSelected[item.id]==1?'checked':'unchecked'}}.png"></image>
+        </view>
+        <view class="ckb-value">
+          {{item.course}}
+        </view>
+      </view>
+    </view>
+    <view class="box box-lr kw-box" wx:for-items="{{ciyu}}" wx:key="{{item.kw}}">
+      <view>
+        <view class="item-shi">
+         {{item.kw}}
+        </view>
+      </view>
+      <view class="box box-lr box-wrap">
+        <view wx:for-items="{{item.word}}" wx:key="{{item.id}}" class="item-ciyu">
+          {{item.name}}
+        </view>
       </view>
     </view>
   </scroll-view>
+</view>
+<view class="c_l_bg" hidden="{{!testStatus}}">
+</view>
+<view class="c_l box box-tb box-wrap" hidden="{{!testStatus}}">
+  <text class="c_b_c">共{{count}}个，已听写{{count_f+count_s}}个，错误{{count_f}}个，正确{{count_s}}个</text>
+  <swiper duration="330" circular="true" bindchange="pageChange" class="c_s">
+    <block wx:for="{{ciyu_t}}" wx:for-item="items" wx:key="{{index}}">
+      <swiper-item>
+          <view class="c_b_k">
+          <view class="c_b_k_b">
+          </view>
+          <view class="c_b_k_w">
+          {{items['kw']}}
+          </view>
+        </view>
+        <view class="c_b_w {{items['status']}}">
+          {{items['name']}}
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="c_b_o box box-lr">
+    <view class="w" bindtap='goWrong'>
+      <image src="../../resources/wrong.png"></image>
+    </view>
+    <view class="r" bindtap='goRight'>
+      <image src="../../resources/right.png"></image>
+    </view>
+  </view>
+</view>
+<view class="c_b">
+  <view class="c_b_b">
+    <view class="c_b_t" bindtap='goTest'>
+      <image id="testPlay" src="{{testStatus?'../../resources/testPause.png':'../../resources/testPlay.png'}}"></image>
+      <text>{{testStatus?'结束听写':'开始听写'}}</text>
+    </view>
+  </view>
 </view>

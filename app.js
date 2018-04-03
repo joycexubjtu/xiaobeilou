@@ -82,11 +82,11 @@ App({
         wx.setStorageSync("shi_list", shi);
         var ciyu = res.data.data.ciyu;
         wx.setStorageSync("ciyu_count", ciyu.length);
-        var ciyu_map = {};
+        /*var ciyu_map = {};
         for (var i = 0; i < ciyu.length; i++) {
           ciyu_map[ciyu[i]['id']] = i;//记录id与index的对应关系
         }
-        wx.setStorageSync("ciyu_map", ciyu_map);
+        wx.setStorageSync("ciyu_map", ciyu_map);*/
         wx.setStorageSync("ciyu_list", ciyu);
       }
     })
@@ -94,28 +94,6 @@ App({
   initData: function () {
     var self = this;
     self.requestData();
-    /*wx.request({
-      url: appConfig.shiCountUrl, //获取所有古诗个数
-      data: {
-        sessionid: wx.getStorageSync('session_id')
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res);
-        var remote_count = res.data.data;
-        try {
-          var local_count = wx.getStorageSync('shi_count');
-          if (!local_count || local_count != remote_count) {
-            self.requestData();
-          }
-        } catch (e) {
-          self.requestData();
-        }
-      }
-    })*/
   },
   globalData: {
     hasLogin: false,

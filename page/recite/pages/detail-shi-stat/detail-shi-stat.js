@@ -27,6 +27,12 @@ Page({
     var shi_detail = shi_list[shi_index];
     var count = shi_detail.count;
     var period = parseInt(count / 3) + 1 ;
+    if (period>7) {
+      period = 7;
+    }
+    if (period<=0) {
+      period = 1;
+    }
     this.setData({
       id: options.id,
       title: shi_detail.title,
