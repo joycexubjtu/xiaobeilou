@@ -116,7 +116,7 @@ Page({
     var count = 0;
     if (that.data.testStatus === false) {
       wx.showLoading({
-        title: '加载中',
+        title: '准备词语中！',
       })
       var ciyu = this.data.ciyu;
       var wdlist = [], tmp = [], wd = {};
