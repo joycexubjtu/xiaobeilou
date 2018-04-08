@@ -9,13 +9,13 @@
       {{title}}
     </view>
     <view class="box box-lr box-nowrap box-pack-center box-align-center shi-author">
-      <view class="shi-author {{testStatus?'recite':''}}">
+      <view class="shi-author {{testStatus && !astatus ?'recite':''}}" bindtap="showauthortips" data-status="{{testStatus && !astatus ?'recite':''}}">
       {{dynasty}} {{author}}
       </view>
     </view>
     <view class="fs36 shi-body">
-      <view class="box box-lr box-nowrap box-pack-center box-align-center shi-line" wx:for-items="{{content}}" wx:key="{{index}}">
-        <view class="shi-word {{testStatus?'recite':''}}" wx:for-items="{{item}}" wx:for-item="word" wx:key="{{index}}">
+      <view class="box box-lr box-nowrap box-pack-center box-align-center shi-line" wx:for-items="{{content}}" wx:key="{{index}}" wx:for-index="idx">
+        <view class="shi-word {{testStatus && !cstatus[idx+'-'+index]?'recite':''}}" wx:for-items="{{item}}" data-status="{{testStatus && !cstatus[idx+'-'+index]?'recite':''}}" data-key="{{idx}}-{{index}}" wx:for-item="word" wx:key="{{index}}" bindtap="showtips">
           {{word}}
         </view>
       </view>

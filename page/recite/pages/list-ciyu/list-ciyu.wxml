@@ -48,8 +48,23 @@
 <view class="c_l_bg" hidden="{{!testStatus}}">
 </view>
 <view class="c_l box box-tb box-wrap" hidden="{{!testStatus}}">
-  <text class="c_b_c">共{{count}}个，已听写{{count_f+count_s}}个，错误{{count_f}}个，正确{{count_s}}个</text>
-  <swiper duration="330" circular="true" bindchange="pageChange" class="c_s">
+  <view class="box box-tb box-wrap">
+    <view class="c_b_c">
+      <text>共{{count}}词。(左右滑动切换词语)</text>
+    </view>
+    <view class="box box-lr box-wrap c_b_c_l">
+      <view>
+        已听写：{{count_f+count_s}}
+      </view>
+      <view>
+        错误：{{count_f}}
+      </view>
+      <view>
+        正确：{{count_s}}
+      </view>
+    </view>
+  </view>
+  <swiper id="c_swiper" duration="330" circular="true" bindchange="pageChange" class="c_s">
     <block wx:for="{{ciyu_t}}" wx:for-item="items" wx:key="{{index}}">
       <swiper-item>
           <view class="c_b_k">

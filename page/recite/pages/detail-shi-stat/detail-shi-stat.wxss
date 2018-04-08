@@ -25,7 +25,7 @@
  }
  .tree{
    position:absolute;
-   bottom:130rpx;
+   bottom:95rpx;
    width:100%;
    text-align:center;
  }

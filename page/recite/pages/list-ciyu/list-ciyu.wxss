@@ -164,8 +164,16 @@
 }
 .c_b_c{
   text-align:center;
-  padding:30rpx 30rpx 0 0;
+  margin-top:48rpx;
   color:#8a8a8a;
+}
+.c_b_c_l{
+  margin-top: 30rpx;
+  color:#8a8a8a;
+}
+.c_b_c_l>view{
+  width:237rpx;
+  text-align:center;
 }
 .c_b_k{
   width:120rpx;
@@ -193,7 +201,7 @@
   height:112rpx;
   font-size:112rpx;
   text-align:center;
-  margin:165rpx 0 245rpx 0;
+  margin:125rpx 0 165rpx 0;
 }
 .c_b_w.fail{
   color:red;
@@ -202,5 +210,5 @@
   color:green;
 }
 .c_s{
-  height:650rpx;
+  height:550rpx;
 }

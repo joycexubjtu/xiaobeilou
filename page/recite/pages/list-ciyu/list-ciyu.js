@@ -180,14 +180,12 @@ Page({
     var count_s = this.data.count_s;
     ciyu_t[this.data.pos]['status'] = 1;
     count_s++;
-    if (pos < this.data.count) {
-      pos++;
-      this.setData({
-        pos: pos,
-        count_s: count_s,
-        ciyu_t, ciyu_t
-      });
-    }
+    var query = wx.createSelectorQuery()
+    query.select('#c_swiper').pageChange();
+    this.setData({
+      count_s: count_s,
+      ciyu_t, ciyu_t
+    });
   },
   /**
    * 生命周期函数--监听页面加载

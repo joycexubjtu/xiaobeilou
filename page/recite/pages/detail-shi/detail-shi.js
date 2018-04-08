@@ -13,21 +13,43 @@ Page({
     title : '', 
     author : '',
     dynasty : '',
-    content: []
+    content: [],
+    cstatus: {},
+    astatus: false
   },
   startRecite: function(event) {
     this.setData({
-      recite: true
+      recite: true,
+      cstatus: {}
     })
+  },
+  showauthortips: function(e) {
+    if (e.target.dataset.status == 'recite') {
+      this.setData({
+        astatus: true
+      });
+    }
+  },
+  showtips: function(e) {
+    if (e.target.dataset.status=='recite') {
+      //e.target
+      var index = e.target.dataset.key;
+      var cstatus = this.data.cstatus;
+      cstatus[index] = true;
+      this.setData({
+        cstatus : cstatus
+      });
+    }
   },
   goTest: function () {
     let that = this;
     if (that.data.testStatus === false) {
       that.setData({
-        testStatus: true
+        testStatus: true,
+        cstatus: {},
+        astatus: false
       })
     } else {
-      
       wx.showModal({
         title: '背过了吗？',
         content: '如果背过了就点确定，没背过就点取消哦',
