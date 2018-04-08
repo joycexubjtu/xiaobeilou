@@ -180,8 +180,6 @@ Page({
     var count_s = this.data.count_s;
     ciyu_t[this.data.pos]['status'] = 1;
     count_s++;
-    var query = wx.createSelectorQuery()
-    query.select('#c_swiper').pageChange();
     this.setData({
       count_s: count_s,
       ciyu_t, ciyu_t
