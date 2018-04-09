@@ -64,7 +64,7 @@
       </view>
     </view>
   </view>
-  <swiper id="c_swiper" duration="330" circular="true" bindchange="pageChange" class="c_s">
+  <swiper id="c_swiper" duration="330" circular="true" bindchange="pageChange" current="{{currentPage}}" skip-hidden-item-layout="true" class="c_s">
     <block wx:for="{{ciyu_t}}" wx:for-item="items" wx:key="{{index}}">
       <swiper-item>
           <view class="c_b_k">

@@ -23,7 +23,8 @@ Page({
     count_s: 0,
     count_f: 0,
     classmap: {0:'normal', 1:'success', 2:'fail'},
-    currentPage: 1
+    currentPage: 0,
+    lastPage: 0
   },
   inputTyping: function (e) {
     this.setData({
@@ -163,27 +164,51 @@ Page({
     var ciyu_t = this.data.ciyu_t;
     var pos = this.data.pos;
     var count_f = this.data.count_f;
+    var last_p = this.data.lastPage;
+    var ciyu_l = ciyu_t.length - 1;
     ciyu_t[pos]['status'] = 2;
     count_f ++;
     if (pos<this.data.count) {
       pos ++;
-      this.setData({
-        pos: pos,
-        count_f: count_f,
-        ciyu_t, ciyu_t
-      });
+      if (last_p === ciyu_l) {
+        this.setData({
+          pos: pos,
+          count_f: count_f,
+          ciyu_t, ciyu_t,
+          currentPage: 0
+        });
+      } else {
+        this.setData({
+          pos: pos,
+          count_f: count_f,
+          ciyu_t, ciyu_t,
+          currentPage: last_p + 1
+        });
+      }
     }
   },
   goRight: function() {
     var ciyu_t = this.data.ciyu_t;
     var pos = this.data.pos;
     var count_s = this.data.count_s;
+    var last_p = this.data.lastPage;
+    var ciyu_l = ciyu_t.length - 1;
     ciyu_t[this.data.pos]['status'] = 1;
     count_s++;
-    this.setData({
-      count_s: count_s,
-      ciyu_t, ciyu_t
-    });
+    if (last_p === ciyu_l){
+      this.setData({
+        count_s: count_s,
+        ciyu_t, ciyu_t,
+        currentPage: 0
+      });
+    }else{
+      this.setData({
+        count_s: count_s,
+        ciyu_t, ciyu_t,
+        currentPage: last_p + 1
+      });
+    }
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -202,7 +227,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    
   },
 
   /**
@@ -247,7 +272,7 @@ Page({
   },
   pageChange: function(e) {
     this.setData({
-      currentPage: e.detail.current + 1
+      lastPage: e.detail.current
     })
   }
 })
