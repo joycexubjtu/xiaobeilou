@@ -1,0 +1,77 @@
+<view class="box box-lr box-nowrap">
+  <view class="tab current" style="width:100%">
+    会伤心的计时器
+  </view>
+</view>
+<view class="box box-tb box-nowrap task-box">
+  <view class="box box-lr box-nowrap">
+    <view class="task b-rb" data-task="compute" bindtap="doTask">
+      <text>口算题卡</text>
+    </view>
+    <view class="task b-rb" data-task="math" bindtap="doTask">
+      <text>数学作业</text>
+    </view>
+    <view class="task b-b" data-task="chinese" bindtap="doTask">
+      <text>语文作业</text>
+    </view>
+  </view>
+  <view class="box box-lr box-nowrap">
+    <view class="task b-rb" data-task="play" bindtap="doTask">
+      <text>玩游戏</text>
+    </view>
+    <view class="task b-rb" data-task="tv" bindtap="doTask">
+      <text>看电视</text>
+    </view>
+    <view class="task b-b" data-task="phone" bindtap="doTask">
+      <text>玩手机</text>
+    </view>
+  </view>
+  <view class="box box-lr box-nowrap">
+    <view class="task b-r" data-task="dinner" bindtap="doTask">
+      <text>吃饭</text>
+    </view>
+    <view class="task b-r" data-task="wash" bindtap="doTask">
+      <text>洗漱</text>
+    </view>
+    <view class="task" data-task="getup" bindtap="doTask">
+      <text>起床</text>
+    </view>
+  </view>
+</view>
+<view class="c_b">
+  <view class="c_b_b">
+    <navigator url="/page/timer/pages/time-his/time-his">
+      <view class="c_b_t">
+        <image id="testPlay" src="../recite/resources/stat.png"></image>
+        <text>查看统计</text>
+      </view>
+    </navigator>
+  </view>
+</view>
+<view class="c_l_bg" hidden="{{task==''}}">
+</view>
+<view class="c_l box box-tb box-wrap" hidden="{{task==''}}">
+  <view class="t_box">
+    <view class="t_box_bg">
+      <image src="resources/girl.png"></image>
+    </view>
+    <view class="t_box_btn t_box_start {{timing?'':'active'}}" bindtap="start" hidden="{{timing}}">
+      开始 
+    </view>
+    <view class="t_box_btn t_box_end active" bindtap="reset">
+      取消
+    </view>
+    <view class="t_box_btn t_box_finish {{!timing?'':'active'}}" bindtap="stop">
+      完成
+    </view>
+    <view class="t_time">
+      {{int}}
+    </view>
+    <view class="t_mouth">
+      <image src="resources/mouth-{{overtime?'cry':'smile'}}.png" style="width:187rpx;height:34rpx;"></image>
+    </view>
+    <view class="t_tips">
+      小朋友，开始{{task}}喽，{{threshold}}分钟内完成有开心奖章哦，超时我会伤心的。
+    </view>
+  </view>
+</view>

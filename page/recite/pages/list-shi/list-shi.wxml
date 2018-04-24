@@ -42,3 +42,13 @@
     </view>
   </scroll-view>
 </view>
+<view class="c_b">
+  <view class="c_b_b">
+    <navigator url="/page/stat/index">
+      <view class="c_b_t">
+        <image id="testPlay" src="../../resources/stat.png"></image>
+        <text>查看统计</text>
+      </view>
+    </navigator>
+  </view>
+</view>

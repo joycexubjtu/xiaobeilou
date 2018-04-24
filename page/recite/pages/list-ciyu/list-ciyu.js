@@ -1,8 +1,3 @@
-// page/recite/pages/list-ciyu/list-ciyu.js
-var time = 0;
-var touchDot = 0;//触摸时的原点
-var interval = "";
-var flag_hd = true;
 Page({
 
   /**
@@ -25,27 +20,6 @@ Page({
     classmap: {0:'normal', 1:'success', 2:'fail'},
     currentPage: 0,
     lastPage: 0
-  },
-  inputTyping: function (e) {
-    this.setData({
-      inputVal: e.detail.value
-    });
-    //this.changeGroup();
-  },
-  clearInput: function () {
-    this.setData({
-      inputVal: "",
-      inputShowed: false
-    });
-    this.changeGroup();
-  },
-  showInput: function () {
-    this.setData({
-      inputShowed: true
-    });
-  },
-  searchData: function () {
-    this.changeCourse();
   },
   changeUnit: function (event) {
     var id = event.currentTarget.dataset.id;
@@ -162,39 +136,36 @@ Page({
   },
   goWrong: function() {
     var ciyu_t = this.data.ciyu_t;
-    var pos = this.data.pos;
     var count_f = this.data.count_f;
     var last_p = this.data.lastPage;
     var ciyu_l = ciyu_t.length - 1;
-    ciyu_t[pos]['status'] = 2;
-    count_f ++;
-    if (pos<this.data.count) {
-      pos ++;
-      if (last_p === ciyu_l) {
-        this.setData({
-          pos: pos,
-          count_f: count_f,
-          ciyu_t, ciyu_t,
-          currentPage: 0
-        });
-      } else {
-        this.setData({
-          pos: pos,
-          count_f: count_f,
-          ciyu_t, ciyu_t,
-          currentPage: last_p + 1
-        });
-      }
+    if (ciyu_t[last_p]['status']==0) {
+      ciyu_t[last_p]['status'] = 2;
+      count_f++;
+    }
+    if (last_p === ciyu_l) {
+      this.setData({
+        count_f: count_f,
+        ciyu_t, ciyu_t,
+        currentPage: 0
+      });
+    } else {
+      this.setData({
+        count_f: count_f,
+        ciyu_t, ciyu_t,
+        currentPage: last_p + 1
+      });
     }
   },
   goRight: function() {
     var ciyu_t = this.data.ciyu_t;
-    var pos = this.data.pos;
     var count_s = this.data.count_s;
     var last_p = this.data.lastPage;
     var ciyu_l = ciyu_t.length - 1;
-    ciyu_t[this.data.pos]['status'] = 1;
-    count_s++;
+    if (ciyu_t[last_p]['status'] == 0) {
+      ciyu_t[last_p]['status'] = 1;
+      count_s++;
+    }
     if (last_p === ciyu_l){
       this.setData({
         count_s: count_s,
@@ -221,54 +192,6 @@ Page({
       'dataset': wx.getStorageSync('ciyu_list')
     })
     this.changeUnitCourses();
-  }, 
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   },
   pageChange: function(e) {
     this.setData({

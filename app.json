@@ -4,14 +4,15 @@
     "page/stat/index",
     "page/my/index",
     "page/recite/pages/list-shi/list-shi",
-    "page/recite/pages/list-cheng/list-cheng",
     "page/recite/pages/detail-shi/detail-shi",
     "page/recite/pages/list-ciyu/list-ciyu",
-    "page/recite/pages/detail-shi-stat/detail-shi-stat"
+    "page/recite/pages/detail-shi-stat/detail-shi-stat",
+    "page/timer/index",
+    "page/timer/pages/time-his/time-his"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "知识小背篓",
+    "navigationBarTitleText": "我爱小背篓",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
@@ -28,10 +29,10 @@
         "text": "背"
       },
       {
-        "pagePath": "page/stat/index",
+        "pagePath": "page/timer/index",
         "iconPath": "image/icon_stat.png",
         "selectedIconPath": "image/icon_stat_HL.png",
-        "text": "记录"
+        "text": "计"
       },
       {
         "pagePath": "page/my/index",

@@ -1,4 +1,5 @@
 var util = require('../../../../util/util.js')
+const appConfig = require('../../../../config');
 // page/recite/pages/detail-shi/detail-shi.js
 const app = getApp()
 Page({
@@ -77,7 +78,7 @@ Page({
   recordResult: function(res) {
     res['sessionid'] = wx.getStorageSync('session_id');
     wx.request({
-      url: 'https://www.xjjstudy.com/index.php/api/record', //记录结果
+      url: appConfig.shiResultUrl, //记录结果
       data: res,
       method: 'POST',
       header: {

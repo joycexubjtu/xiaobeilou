@@ -1,0 +1,36 @@
+<view class="box box-tb">
+  <view class="flex box box-tb historybox">
+    <view class="historytitle">
+      已获得{{count}}个开心奖章
+    </view>
+    <view class="history-list">
+      <view class="sidebar">
+      </view>
+      <view class="daygroup" wx:for-items="{{history}}" wx:key="{{item.day}}">
+        <view class="flex box box-lr box-align-center daytitle">
+          <view class="day-icon">
+          </view>
+          <view class="day-desc">
+            {{item.day}}
+          </view>
+        </view>
+        <view class="daydetail">
+          <view class="flex box box-lr box-align-center timedetail" wx:for-items="{{item.list}}" wx:key="{{item.time}}">
+            <view class="time">
+              {{item.time}}
+            </view>
+            <view class="action">
+              {{item.task}}
+            </view>
+            <view class="target_type">
+              用时{{item.use_time}}
+            </view>
+            <view class="result" hidden="{{item.result==1}}">
+              <image src="../../resources/sticker.png" style="width:48rpx;height:48rpx;"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

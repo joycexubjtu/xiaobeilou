@@ -1,4 +1,4 @@
-// page/recite/pages/list-shi/list-shi.js
+const app = getApp()
 Page({
 
   /**
@@ -107,6 +107,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var shilist = wx.getStorageSync('shi_list');
+    if (!shilist) {
+      app.requestData();
+    }
     this.setData({
       'dataset': wx.getStorageSync('shi_list')
     })
