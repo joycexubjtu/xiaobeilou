@@ -3,4 +3,10 @@
   <view>
     <image src="../../image/gzh.png"></image>
   </view>
+  <view style="margin-top:50rpx;">
+    <navigator url="/page/my/reson/reson" class="navigator">
+    <text>点此查看我爱小背篓的初衷。</text>
+    </navigator>
 </view>
+</view>
+

@@ -11,7 +11,26 @@ Page({
         desc:'共75首古诗',
         bgimg: 'bg-shi.png',
         page: 'list-shi',
+        url: '/page/recite/pages/list-shi/list-shi',
         count: 0
+      },
+      daka: {
+        id: 'daka',
+        name: '犹太式辅导法打卡',
+        desc: '',
+        bgimg: 'bg-daka.png',
+        page: '../../daka/index',
+        url: '/page/daka/index',
+        count: 1
+      },
+      jianshi: {
+        id: 'jianshi',
+        name: '人类简史时间轴',
+        desc: '',
+        bgimg: 'bg-js.png',
+        page: 'list-js',
+        url: '/page/recite/pages/list-js/list-js',
+        count: 1
       },
       ciyu: {
         id: 'ciyu',
@@ -19,8 +38,9 @@ Page({
         desc: '',
         bgimg: 'bg-ciyu.png',
         page: 'list-ciyu',
+        url: '/page/recite/pages/list-ciyu/list-ciyu',
         count: 1
-      },
+      }
     }
   },
   onLoad: function (options) {

@@ -1,0 +1,28 @@
+<scroll-view scroll-y scroll-into-view	="{{scrollTop}}" style="height:100%">
+  <view class="p-p b-c-{{item.id}}" style="height:{{item.height}}rpx" wx:for-items="{{periods}}" wx:key="{{item.id}}" id="p-{{item.id}}">
+    <view class="p-border" style="height:{{item.height}}rpx">
+    </view>
+    <view class="p-time b-t-{{item.id}}">
+      {{item.name}}
+    </view>
+    <view class="p-block" style="top:{{index*400+150}}rpx;" wx:for="{{item.times}}" wx:for-item="item2">
+      <view class="p-block-cnt">
+        <view class="p-round b-c-{{item.id}}">
+          <view class="p-round-t">{{item2.t1}}</view>
+          <view class="p-round-b"><text class="number">{{item2.t2}}</text><text>{{item2.unit}}</text>年</view>
+        </view>
+        <view class="p-line">
+        </view>
+        <view class="p-title">
+          {{item2.title}}
+        </view>
+        <view class="p-txt">
+          {{item2.desc}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="padding:20rpx 50rpx;background:#555;color:#fff;text-align:center;font-size:24rpx;">
+    内容源自《人类简史》绘本版，主要目的用于低年级孩子认识数字，了解人类简史，详情见公号推文。
+  </view>
+</scroll-view>

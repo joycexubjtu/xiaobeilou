@@ -6,7 +6,7 @@
     </block>
   </view>
   <block wx:for-items="{{list}}" wx:key="{{item.id}}">
-    <navigator url="pages/{{item.page}}/{{item.page}}" class="navigator">
+    <navigator url="{{item.url}}" class="navigator">
       <view class="box box-tb box-nowrap">
         <view class="item-image">
           <image src="resources/{{item.bgimg}}"></image>

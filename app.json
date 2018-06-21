@@ -8,7 +8,11 @@
     "page/recite/pages/list-ciyu/list-ciyu",
     "page/recite/pages/detail-shi-stat/detail-shi-stat",
     "page/timer/index",
-    "page/timer/pages/time-his/time-his"
+    "page/timer/pages/time-his/time-his",
+    "page/recite/pages/list-js/list-js",
+    "page/recite/pages/detail-js/detail-js",
+    "page/daka/index",
+    "page/my/reson/reson"
   ],
   "window": {
     "navigationBarTextStyle": "black",

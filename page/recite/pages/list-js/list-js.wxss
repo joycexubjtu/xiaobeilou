@@ -1,0 +1,40 @@
+@import "../../../common/lib/weui.wxss";
+@import "../../../common/index.wxss";
+.t-period{
+  width:400rpx;
+  margin:0 auto;
+  position:relative;
+  height:100rpx;
+}
+.t-block{
+  position:absolute;
+  height:100rpx;
+  width:100%;
+  opacity:0.5;
+}
+.t-bottom{
+  width:80rpx;
+  height:0;
+  background-color:#fed547;
+  position:absolute;
+  left:160rpx;
+  top:0;
+  border-bottom-left-radius:15rpx;
+  border-bottom-right-radius:15rpx;
+}
+.t-bottom-txt{
+  width:60rpx;
+  height:0;
+  position:absolute;
+  left:170rpx;
+  top:0;
+  text-align:center;
+  color:#fff8eb;
+  box-shadow:10rpx 10rpx 30rpx 0rpx rgba(4,3,6,.3)
+}
+.t-cnt{
+  position:absolute;
+  width:100%;
+  line-height:100rpx;
+  text-align:center;
+}

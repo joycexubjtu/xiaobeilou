@@ -1,0 +1,104 @@
+<view class="box contbox box-tb box-nowrap flex-wrp" style="background-color:#fff;height:100%;">
+  <view class="box box-tb box-nowrap flex-wrp" style="margin-top:100rpx;">
+    <view style="width:400rpx;margin:0 auto;border-top-left-radius:60rpx;border-top-right-radius:60rpx;box-shadow:10rpx 10rpx 30rpx 0rpx rgba(4,3,6,.3)">
+      <navigator url="/page/recite/pages/detail-js/detail-js?id=0">
+        <view class="t-period">
+          <view class="t-block" style="background-color:#c8b75b;border-top-left-radius:60rpx;border-top-right-radius:60rpx;">
+          </view>
+          <view class="t-cnt">
+            <view class="t-cnt-title">
+            史前时期
+            </view>
+            <view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <navigator url="/page/recite/pages/detail-js/detail-js?id=1">
+        <view class="t-period">
+          <view class="t-block" style="background-color:#ac863b;">
+          </view>
+          <view class="t-cnt">
+            <view class="t-cnt-title">
+            古文明时代
+            </view>
+            <view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <navigator url="/page/recite/pages/detail-js/detail-js?id=2">
+        <view class="t-period">
+          <view class="t-block" style="background-color:#c62022;">
+          </view>
+          <view class="t-cnt">
+            <view class="t-cnt-title">
+            中世纪
+            </view>
+            <view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <navigator url="/page/recite/pages/detail-js/detail-js?id=3">
+        <view class="t-period">
+          <view class="t-block" style="background-color:#ce1a85;">
+          </view>
+          <view class="t-cnt">
+            <view class="t-cnt-title">
+            文艺复兴时期
+            </view>
+            <view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <navigator url="/page/recite/pages/detail-js/detail-js?id=4">
+        <view class="t-period">
+          <view class="t-block" style="background-color:#59269f;">
+          </view>
+          <view class="t-cnt">
+            <view class="t-cnt-title">
+            启蒙时代
+            </view>
+            <view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <navigator url="/page/recite/pages/detail-js/detail-js?id=5">
+        <view class="t-period">
+          <view class="t-block" style="background-color:#2560c4;">
+          </view>
+          <view class="t-cnt">
+            <view class="t-cnt-title">
+            工业革命时期
+            </view>
+            <view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <navigator url="/page/recite/pages/detail-js/detail-js?id=6">
+        <view class="t-period">
+          <view class="t-block" style="background-color:#6caba2;">
+          </view>
+          <view class="t-cnt">
+            <view class="t-cnt-title">
+            20世纪
+            </view>
+            <view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <view class="t-period">
+      <view class="t-bottom" style="background-color:#e4c1a1;height:200rpx;box-shadow:10rpx 10rpx 30rpx 0rpx rgba(4,3,6,.3);">
+      </view>
+      <view class="t-bottom-txt">
+        人类简史
+      </view>
+    </view>
+  </view>
+</view>
